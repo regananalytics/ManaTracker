@@ -1,0 +1,3 @@
+[submodule "src/csharp/libs/MemCore"]
+	path = src/csharp/libs/MemCore
+	url = https://github.com/regananalytics/MemCore.git
