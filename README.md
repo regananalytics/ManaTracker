@@ -1,7 +1,7 @@
 # ManaTracker
  Randomizer Tracker App built on C# and Python
 
-## Authors
+## Contributors
 <a href="https://www.twitch.tv/soundofwaffles">
   <img alt="SoundOfWaffles's Twitch" width="45px" src="https://static-cdn.jtvnw.net/jtv_user_pictures/b482da2d-59c3-4aad-ad95-0a02aa9f51f4-profile_image-70x70.png" />
 </a>
