@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "1mXvarW/+hX743O6MkoXL1WIHgK8HaSbAhmtuThFnpOQ0pBKCbAC3ROAifCn629UuHZYDl/avbhZP8rTCWe6IQ==",
+  "dgSpecHash": "CK86S6Ywt8qZHGY75Lzt4/wwtYQXeaSx/MXU9Zo/E31Q4/OCdkjrBrWkkbQSC4APMaCvL9DQpBGIibGAGlHdnQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\verti\\Documents\\GitHub\\ManaTracker\\src\\csharp\\ManaTracker\\ManaTracker.csproj",
+  "projectFilePath": "c:\\Users\\verti\\Documents\\GitHub\\ManaTracker\\src\\csharp\\ManaTracker\\ManaTracker.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\verti\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\verti\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512"
+    "C:\\Users\\verti\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\verti\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512",
+    "C:\\Users\\verti\\.nuget\\packages\\yamldotnet\\13.1.1\\yamldotnet.13.1.1.nupkg.sha512"
   ],
   "logs": []
 }
