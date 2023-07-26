@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\libs\MemCore\src\MemCore\MemCore.csproj" />
+    <ProjectReference Include="..\libs\MemCore\src\libs\ProcessMemory\ProcessMemory\ProcessMemory.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
