@@ -1,0 +1,39 @@
+Config Spec
+
+What:
+    Config yamls provide the pointer memory addresses for games.
+
+Keywords:
+    GAME_NAME: The name of the game.
+    GAME_ID: The process name of the game.
+    GAME_EXE: The game executable.
+
+    GAME_VERSIONS:
+        # The game version is the key for the game's memory addresses.
+        [Version]:
+            DESCRIPTION: A description of the game version.
+            HASH: The hash of the game executable, used to identify the running version.
+            ADDRESSES: Dictionary of named keys and hex addresses for game pointers.
+
+                [Address Key]: <Hex Memory Address>
+                
+    STATE_POINTERS: 
+        [Pointer Name]:
+            DESCRIPTION: A description of the pointer.
+            ADDRESS: The hex memory address of the pointer. Can be Hex or a reference to a game version address.
+            LEVELS: Multilevel pointer offsets. Each level is a hex offset from the previous level.
+                - <Hex Offset>
+                - <Hex Offset>
+            OFFSET: The hex offset from the final level pointer.
+            TYPE: The data type for the pointer. Can be a basic type, or the name of a struct.
+
+    STRUCTS:
+        [Struct Name]:
+            DESCRIPTION: A description of the struct.
+            FIELDS:
+                # Dictionary of named keys and hex offsets for struct fields.
+                [Field Name]:
+                    DESCRIPTION: A description of the field.
+                    OFFSET: The hex offset from the struct pointer.
+                    TYPE: The data type for the field. Can be a basic type, or the name of a struct.
+                    DEFAULT: The default value for the field.
