@@ -1,3 +1,0 @@
-[submodule "src/MemCore"]
-	path = src/MemCore
-	url = https://github.com/regananalytics/MemCore.git
