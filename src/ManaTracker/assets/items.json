@@ -1,0 +1,884 @@
+{
+    "1": {
+        "name": "WeaponSurvivalKnifeJill",
+        "description": "Jill Knife",
+        "text": "Knife",
+        "page": [1,1],
+        "enum": 1
+    },
+    "2": {
+        "name": "WeaponSurvivalKnifeChris",
+        "description": "Chris Knife",
+        "text": "Knife",
+        "page": [1,2],
+        "enum": 2
+    },
+    "3": {
+        "name": "WeaponHandgun",
+        "description": "Handgun",
+        "text": "Handgun",
+        "page": [1,3],
+        "enum": 3
+    },
+    "4": {
+        "name": "WeaponSelfDefenseGun",
+        "description": "Self Defense Gun",
+        "text": "Defense",
+        "page": [1,4],
+        "enum": 4
+    },
+    "5": {
+        "name": "WeaponHandgunSamurai",
+        "description": "Samaurai Handgun",
+        "text": "Samaurai",
+        "page": [1,5],
+        "enum": 5
+    },
+    "6": {
+        "name": "WeaponShotgun",
+        "description": "Shotgun",
+        "text": "Shotgun",
+        "page": [1,6],
+        "enum": 6
+    },
+    "7": {
+        "name": "WeaponGrenadeLauncher",
+        "description": "Grenade Launcher",
+        "text": "Grenade",
+        "page": [1,7],
+        "enum": 7
+    },
+    "10": {
+        "name": "WeaponRocketLauncher",
+        "description": "Rocket Launcher",
+        "text": "Rocket",
+        "page": [2,1],
+        "enum": 10
+    },
+    "11": {
+        "name": "WeaponMagnum",
+        "description": "Magnum",
+        "text": "Magnum",
+        "page": [2,2],
+        "enum": 11
+    },
+    "12": {
+        "name": "WeaponFlamethrower",
+        "description": "Flamethrower",
+        "text": "Flamethrower",
+        "page": [2,3],
+        "enum": 12
+    },
+    "13": {
+        "name": "WeaponShotgunAssault",
+        "description": "Assault Shotgun",
+        "text": "Assault",
+        "page": [2,4],
+        "enum": 13
+    },
+    "14": {
+        "name": "WeaponRocketLauncherSingleBarrel",
+        "description": "Single Barrel Rocket Launcher",
+        "text": "Single",
+        "page": [2,5],
+        "enum": 14
+    },
+    "15": {
+        "name": "WeaponMagnumBarry",
+        "description": "Barry's Magnum",
+        "text": "Barry's",
+        "page": [2,6],
+        "enum": 15
+    },
+    "16": {
+        "name": "AmmoGrenadeShellsExplosive",
+        "description": "Explosive Grenades",
+        "text": "#",
+        "page": [2,7],
+        "enum": 16
+    },
+    "17": {
+        "name": "AmmoHandgun",
+        "description": "#",
+        "text": "",
+        "page": [3,1],
+        "enum": 17
+    },
+    "18": {
+        "name": "AmmoShotgun",
+        "description": "Shotgun Ammo",
+        "text": "#",
+        "page": [3,2],
+        "enum": 18
+    },
+    "19": {
+        "name": "AmmoGrenadeShellsAcid",
+        "description": "Acid Grenades",
+        "text": "#",
+        "page": [3,3],
+        "enum": 19
+    },
+    "20": {
+        "name": "AmmoGrenadeShellsIncendiary",
+        "description": "Incendiary Grenades",
+        "text": "#",
+        "page": [3,4],
+        "enum": 20
+    },
+    "21": {
+        "name": "GoldenArrow",
+        "description": "Golden Arrow",
+        "text": "Arrow",
+        "page": [3,5],
+        "enum": 21
+    },
+    "22": {
+        "name": "BookCurses",
+        "description": "Book of Curses",
+        "text": "Curses",
+        "page": [3,6],
+        "enum": 22
+    },
+    "23": {
+        "name": "CoinImitationOfAKey",
+        "description": "Immitation Key Coin",
+        "text": "Coin",
+        "page": [3,7],
+        "enum": 23
+    },
+    "24": {
+        "name": "DogCollar",
+        "description": "Dog Collar",
+        "text": "Collar",
+        "page": [4,1],
+        "enum": 24
+    },
+    "25": {
+        "name": "Ammo_Magnum",
+        "description": "Magnum Ammo",
+        "text": "#",
+        "page": [4,2],
+        "enum": 25
+    },
+    "26": {
+        "name": "Broach",
+        "description": "Broach",
+        "text": "Broach",
+        "page": [4,3],
+        "enum": 26
+    },
+    "27": {
+        "name": "FuelCanteen",
+        "description": "Fuel Canteen",
+        "text": "Canteen",
+        "page": [4,4],
+        "enum": 27
+    },
+    "28": {
+        "name": "ArrowHead",
+        "description": "Arrow Head",
+        "text": "Arrowhead",
+        "page": [4,5],
+        "enum": 28
+    },
+    "29": {
+        "name": "ImitationOfAKey",
+        "description": "Imitation Key",
+        "text": "Imitation",
+        "page": [4,6],
+        "enum": 29
+    },
+    "30": {
+        "name": "KeyGallery",
+        "description": "Gallery Key",
+        "text": "Gallery",
+        "page": [4,7],
+        "enum": 30
+    },
+    "31": {
+        "name": "FuelSupplyCapsuleFull",
+        "description": "Fuel Capsule Full",
+        "text": "Full",
+        "page": [5,1],
+        "enum": 31
+    },
+    "32": {
+        "name": "MusicalScoreCover",
+        "description": "Musical Score Cover",
+        "text": "Cover",
+        "page": [5,2],
+        "enum": 32
+    },
+    "33": {
+        "name": "FirstAidSpray",
+        "description": "First Aid Spray",
+        "text": "FAS",
+        "page": [5,3],
+        "enum": 33
+    },
+    "34": {
+        "name": "HerbGreen",
+        "description": "Green Herb",
+        "text": "Green",
+        "page": [5,4],
+        "enum": 34
+    },
+    "35": {
+        "name": "HerbRed",
+        "description": "Red Herb",
+        "text": "Red",
+        "page": [5,5],
+        "enum": 35
+    },
+    "36": {
+        "name": "HerbBlue",
+        "description": "Blue Herb",
+        "text": "Blue",
+        "page": [5,6],
+        "enum": 36
+    },
+    "37": {
+        "name": "MixedHerbCombo1",
+        "description": "Mixed Herb GG",
+        "text": "GG",
+        "page": [5,7],
+        "enum": 37
+    },
+    "38": {
+        "name": "MixedHerbCombo2",
+        "description": "Mixed Herb GGG",
+        "text": "GGG",
+        "page": [6,1],
+        "enum": 38
+    },
+    "39": {
+        "name": "MixedHerbCombo3",
+        "description": "Mixed Herb RG",
+        "text": "RG",
+        "page": [6,2],
+        "enum": 39
+    },
+    "40": {
+        "name": "MixedHerbCombo4",
+        "description": "Mixed Herb RGB",
+        "text": "RGB",
+        "page": [6,3],
+        "enum": 40
+    },
+    "41": {
+        "name": "MixedHerbCombo5",
+        "description": "Mixed Herb BG",
+        "text": "BG",
+        "page": [6,4],
+        "enum": 41
+    },
+    "42": {
+        "name": "MixedHerbCombo6",
+        "description": "Mixed Herb BGG",
+        "text": "BGG",
+        "page": [6,5],
+        "enum": 42
+    },
+    "43": {
+        "name": "LockPick",
+        "description": "Lock Pick",
+        "text": "Lockpick",
+        "page": [6,6],
+        "enum": 43
+    },
+    "44": {
+        "name": "KeyOld",
+        "description": "Old Key",
+        "text": "Old",
+        "page": [6,7],
+        "enum": 44
+    },
+    "45": {
+        "name": "KeySword",
+        "description": "Sword Key",
+        "text": "Sword",
+        "page": [7,1],
+        "enum": 45
+    },
+    "46": {
+        "name": "KeyArmor",
+        "description": "Armor Key",
+        "text": "Armor",
+        "page": [7,2],
+        "enum": 46
+    },
+    "47": {
+        "name": "KeyShield",
+        "description": "Shield Key",
+        "text": "Shield",
+        "page": [7,3],
+        "enum": 47
+    },
+    "48": {
+        "name": "KeyHelmet",
+        "description": "Helmet Key",
+        "text": "Helmet",
+        "page": [7,4],
+        "enum": 48
+    },
+    "49": {
+        "name": "Key001",
+        "description": "Room 001 Key",
+        "text": "001",
+        "page": [7,5],
+        "enum": 49
+    },
+    "50": {
+        "name": "Key003",
+        "description": "Room 003 Key",
+        "text": "003",
+        "page": [7,6],
+        "enum": 50
+    },
+    "51": {
+        "name": "MedalEagle",
+        "description": "Eagle Medal",
+        "text": "Eagle",
+        "page": [7,7],
+        "enum": 51
+    },
+    "52": {
+        "name": "MedalWolf",
+        "description": "Wolf Medal",
+        "text": "Wolf",
+        "page": [8,1],
+        "enum": 52
+    },
+    "53": {
+        "name": "StoneAndMetalObject",
+        "description": "Stone and Metal Object",
+        "text": "Complete",
+        "page": [8,2],
+        "enum": 53
+    },
+    "54": {
+        "name": "KeyLabPower",
+        "description": "Lab Power Key",
+        "text": "Power",
+        "page": [8,3],
+        "enum": 54
+    },
+    "55": {
+        "name": "KeyLabMaster",
+        "description": "Lab Master Key",
+        "text": "Master",
+        "page": [8,4],
+        "enum": 55
+    },
+    "56": {
+        "name": "CrestStar",
+        "description": "Star Crest",
+        "text": "Star",
+        "page": [8,5],
+        "enum": 56
+    },
+    "57": {
+        "name": "CrestWind",
+        "description": "Wind Crest",
+        "text": "Wind",
+        "page": [8,6],
+        "enum": 57
+    },
+    "58": {
+        "name": "CrestSun",
+        "description": "Sun Crest",
+        "text": "Sun",
+        "page": [8,7],
+        "enum": 58
+    },
+    "59": {
+        "name": "CrestMoon",
+        "description": "Moon Crest",
+        "text": "Moon",
+        "page": [9,1],
+        "enum": 59
+    },
+    "60": {
+        "name": "CrankSquare",
+        "description": "Square Crank",
+        "text": "Square",
+        "page": [9,2],
+        "enum": 60
+    },
+    "61": {
+        "name": "CrankHex",
+        "description": "Hex Crank",
+        "text": "Hex",
+        "page": [9,3],
+        "enum": 61
+    },
+    "62": {
+        "name": "KeyCloset",
+        "description": "Closet Key",
+        "text": "Closet",
+        "page": [9,4],
+        "enum": 62
+    },
+    "63": {
+        "name": "KeyEmblem",
+        "description": "Emblem Key",
+        "text": "Emblem",
+        "page": [9,5],
+        "enum": 63
+    },
+    "64": {
+        "name": "StoneRing",
+        "description": "Stone Ring",
+        "text": "Stone",
+        "page": [9,6],
+        "enum": 64
+    },
+    "65": {
+        "name": "MetalObject",
+        "description": "Metal Object",
+        "text": "Metal",
+        "page": [9,7],
+        "enum": 65
+    },
+    "66": {
+        "name": "????",
+        "description": "?",
+        "text": "?",
+        "page": [10,1],
+        "enum": 66
+    },
+    "67": {
+        "name": "Battery",
+        "description": "Battery",
+        "text": "Battery",
+        "page": [10,2],
+        "enum": 67
+    },
+    "68": {
+        "name": "InkRibbon",
+        "description": "Ink Ribbon",
+        "text": "Ink",
+        "page": [10,3],
+        "enum": 68
+    },
+    "69": {
+        "name": "Emblem",
+        "description": "Emblem",
+        "text": "Emblem",
+        "page": [10,4],
+        "enum": 69
+    },
+    "70": {
+        "name": "EmblemGolden",
+        "description": "Golden Emblem",
+        "text": "Gold",
+        "page": [10,5],
+        "enum": 70
+    },
+    "71": {
+        "name": "MusicalScoreComplete",
+        "description": "Music Score Complete",
+        "text": "Score",
+        "page": [10,6],
+        "enum": 71
+    },
+    "72": {
+        "name": "GemstoneRed",
+        "description": "Red Gemstone",
+        "text": "Red",
+        "page": [10,7],
+        "enum": 72
+    },
+    "73": {
+        "name": "GemstoneBlue",
+        "description": "Blue Gemstone",
+        "text": "Blue",
+        "page": [11,1],
+        "enum": 73
+    },
+    "74": {
+        "name": "GemstoneYellow",
+        "description": "Yellow Gemstone",
+        "text": "Yellow",
+        "page": [11,2],
+        "enum": 74
+    },
+    "75": {
+        "name": "ShotgunBroken",
+        "description": "Broken Shotgun",
+        "text": "Broken",
+        "page": [11,3],
+        "enum": 75
+    },
+    "76": {
+        "name": "ChemicalHerbicide",
+        "description": "Herbicide",
+        "text": "Herbicide",
+        "page": [11,4],
+        "enum": 76
+    },
+    "77": {
+        "name": "Lighter",
+        "description": "Lighter",
+        "text": "Lighter",
+        "page": [11,5],
+        "enum": 77
+    },
+    "78": {
+        "name": "Serum",
+        "description": "Serum",
+        "text": "Serum",
+        "page": [11,6],
+        "enum": 78
+    },
+    "79": {
+        "name": "Transceiver",
+        "description": "Tranceiver",
+        "text": "Tranceiver",
+        "page": [11,7],
+        "enum": 79
+    },
+    "80": {
+        "name": "BottleEmpty",
+        "description": "Bottle Empty",
+        "text": "Empty",
+        "page": [12,1],
+        "enum": 80
+    },
+    "81": {
+        "name": "BottleWater",
+        "description": "Bottle Water",
+        "text": "Water",
+        "page": [12,2],
+        "enum": 81
+    },
+    "82": {
+        "name": "BottleUMB3",
+        "description": "Bottle UMB3",
+        "text": "UMB3",
+        "page": [12,3],
+        "enum": 82
+    },
+    "83": {
+        "name": "BottleNP004",
+        "description": "Bottle NP004",
+        "text": "NP004",
+        "page": [12,4],
+        "enum": 83
+    },
+    "84": {
+        "name": "BottleYellow6",
+        "description": "Bottle Yellow 6",
+        "text": "Yellow 6",
+        "page": [12,5],
+        "enum": 84
+    },
+    "85": {
+        "name": "BottleUMB7",
+        "description": "Bottle UMB7",
+        "text": "UMB7",
+        "page": [12,6],
+        "enum": 85
+    },
+    "86": {
+        "name": "BottleUMB10",
+        "description": "Bottle UMB10",
+        "text": "UMB10",
+        "page": [12,7],
+        "enum": 86
+    },
+    "87": {
+        "name": "BottleVP017",
+        "description": "Bottle VP017",
+        "text": "VP017",
+        "page": [13,1],
+        "enum": 87
+    },
+    "88": {
+        "name": "VJolt",
+        "description": "VJolt",
+        "text": "VJolt",
+        "page": [13,2],
+        "enum": 88
+    },
+    "90": {
+        "name": "BookRed",
+        "description": "Red Book",
+        "text": "Red",
+        "page": [13,3],
+        "enum": 90
+    },
+    "91": {
+        "name": "BookLastVol1",
+        "description": "Last Vol 1",
+        "text": "Vol 1",
+        "page": [13,4],
+        "enum": 91
+    },
+    "92": {
+        "name": "BookLastVol2",
+        "description": "Last Vol 2",
+        "text": "Vol 2",
+        "page": [13,5],
+        "enum": 92
+    },
+    "93": {
+        "name": "MODisk1",
+        "description": "MO Disk 1",
+        "text": "MOD 1",
+        "page": [13,6],
+        "enum": 93
+    },
+    "94": {
+        "name": "MODisk2",
+        "description": "MO Disk 2",
+        "text": "MOD 2",
+        "page": [13,7],
+        "enum": 94
+    },
+    "95": {
+        "name": "MODisk3",
+        "description": "MO Disk 3",
+        "text": "MOD 3",
+        "page": [14,1],
+        "enum": 95
+    },
+    "96": {
+        "name": "DogWhistle",
+        "description": "Dog Whistle",
+        "text": "Whistle",
+        "page": [14,2],
+        "enum": 96
+    },
+    "97": {
+        "name": "FuseUnit",
+        "description": "Fuse Unit",
+        "text": "Fuse",
+        "page": [14,3],
+        "enum": 97
+    },
+    "98": {
+        "name": "FuelSupplyCapsuleFull2",
+        "description": "Fuel Capsule Full 2",
+        "text": "Full 2",
+        "page": [14,4],
+        "enum": 98
+    },
+    "99": {
+        "name": "JewelryBoxStoneRing",
+        "description": "Jewelry Box (Stone Ring)",
+        "text": "Stone",
+        "page": [14,5],
+        "enum": 99
+    },
+    "100": {
+        "name": "InsecticideSpray",
+        "description": "Insecticide Spray",
+        "text": "Spray",
+        "page": [14, 6],
+        "enum": 100
+    },
+    "101": {
+        "name": "FirstAidBoxSpray",
+        "description": "First Aid Box Spray",
+        "text": "Spray",
+        "page": [14, 7],
+        "enum": 101
+    },
+    "102": {
+        "name": "JewelryBoxEmblemKey",
+        "description": "Jewelry Box Emblem Key",
+        "text": "Emblem",
+        "page": [15, 1],
+        "enum": 102
+    },
+    "103": {
+        "name": "JewelryBoxDeathMask",
+        "description": "Jewelry Box Death Mask",
+        "text": "Mask",
+        "page": [15, 2],
+        "enum": 103
+    },
+    "104": {
+        "name": "FirstAidBoxHerbGreen",
+        "description": "First Aid Box Herb Green",
+        "text": "Herb Green",
+        "page": [15, 3],
+        "enum": 104
+    },
+    "105": {
+        "name": "FirstAidBoxHerbBlue",
+        "description": "First Aid Box Herb Blue",
+        "text": "Herb Blue",
+        "page": [15, 4],
+        "enum": 105
+    },
+    "106": {
+        "name": "SignalRockets",
+        "description": "Signal Rockets",
+        "text": "Rockets",
+        "page": [15, 5],
+        "enum": 106
+    },
+    "107": {
+        "name": "FlamethrowerBroken",
+        "description": "Broken Flamethrower",
+        "text": "Flamethrower",
+        "page": [15, 6],
+        "enum": 107
+    },
+    "108": {
+        "name": "WoodenMount",
+        "description": "Wooden Mount",
+        "text": "Mount",
+        "page": [15, 7],
+        "enum": 108
+    },
+    "109": {
+        "name": "SlideFilter",
+        "description": "Slide Filter",
+        "text": "Filter",
+        "page": [16, 1],
+        "enum": 109
+    },
+    "110": {
+        "name": "KeyControlRoom",
+        "description": "Key Control Room",
+        "text": "Control",
+        "page": [16, 2],
+        "enum": 110
+    },
+    "111": {
+        "name": "FuelSupplyCapsuleEmpty",
+        "description": "Fuel Supply Capsule Empty",
+        "text": "Capsule",
+        "page": [16, 3],
+        "enum": 111
+    },
+    "112": {
+        "name": "Dagger",
+        "description": "Dagger",
+        "text": "Dagger",
+        "page": [16, 4],
+        "enum": 112
+    },
+    "113": {
+        "name": "FlashGrenade",
+        "description": "Flash Grenade",
+        "text": "Grenade",
+        "page": [16, 5],
+        "enum": 113
+    },
+    "114": {
+        "name": "Taser",
+        "description": "Taser",
+        "text": "Taser",
+        "page": [16, 6],
+        "enum": 114
+    },
+    "115": {
+        "name": "BeeSpecimen",
+        "description": "Bee Specimen",
+        "text": "Bee",
+        "page": [16, 7],
+        "enum": 115
+    },
+    "116": {
+        "name": "LureWithoutAHook",
+        "description": "Lure Without A Hook",
+        "text": "Lure",
+        "page": [17, 1],
+        "enum": 116
+    },
+    "117": {
+        "name": "FishHook",
+        "description": "Fish Hook",
+        "text": "Hook",
+        "page": [17, 2],
+        "enum": 117
+    },
+    "118": {
+        "name": "LureOfABee",
+        "description": "Lure Of A Bee",
+        "text": "Bee Lure",
+        "page": [17, 3],
+        "enum": 118
+    },
+    "119": {
+        "name": "XRayOfClark",
+        "description": "X-Ray Of Clark",
+        "text": "Clark",
+        "page": [17, 4],
+        "enum": 119
+    },
+    "120": {
+        "name": "XRayOfGail",
+        "description": "X-Ray Of Gail",
+        "text": "Gail",
+        "page": [17, 5],
+        "enum": 120
+    },
+    "121": {
+        "name": "BatteryPack",
+        "description": "Battery Pack",
+        "text": "Battery",
+        "page": [17, 6],
+        "enum": 121
+    },
+    "122": {
+        "name": "Shaft",
+        "description": "Shaft",
+        "text": "Shaft",
+        "page": [17, 7],
+        "enum": 122
+    },
+    "123": {
+        "name": "Cylinder",
+        "description": "Cylinder",
+        "text": "Cylinder",
+        "page": [18, 1],
+        "enum": 123
+    },
+    "124": {
+        "name": "CylinderShaft",
+        "description": "Cylinder Shaft",
+        "text": "Shaft",
+        "page": [18, 2],
+        "enum": 124
+    },
+    "125": {
+        "name": "DeathMaskNoEyesNoseMouth",
+        "description": "Death Mask No Eyes Nose Mouth",
+        "text": "None",
+        "page": [18, 3],
+        "enum": 125
+    },
+    "126": {
+        "name": "DeathMaskNoEyes",
+        "description": "Death Mask No Eyes",
+        "text": "Eyes",
+        "page": [18, 4],
+        "enum": 126
+    },
+    "127": {
+        "name": "DeathMaskNoNose",
+        "description": "Death Mask No Nose",
+        "text": "Nose",
+        "page": [18, 5],
+        "enum": 127
+    },
+    "128": {
+        "name": "DeathMaskNoMouth",
+        "description": "Death Mask No Mouth",
+        "text": "Mouth",
+        "page": [18, 6],
+        "enum": 128
+    },
+    "129": {
+        "name": "MusicalScorePages",
+        "description": "Musical Score Pages",
+        "text": "Pages",
+        "page": [18, 7],
+        "enum": 129
+    }
+}

@@ -1,4 +1,5 @@
-# MemCfg - Resident Evil 1 (2019)
+# MemCfg - Resident Evil 1 (2015)
+# 2019 Patch
 
 GameName: Resident Evil 1 (2015)
 GameID: RE1
@@ -11,49 +12,51 @@ GameVersions:
   RE1:
     Name: RE1
     Description: Resident Evil 1 RE HD (2015)
-    Hash: [ 0x0A, 0xB6, 0x1B, 0xAD, 0xA3, 0x47, 0x83, 0xA6, 0x84, 0x49, 0x08, 0x58, 0xE2, 0x00, 0x5B, 0xBD, 0x2E, 0x9A, 0x1B, 0x13, 0x53, 0xEA, 0xAA, 0xD4, 0x43, 0x37, 0xBF, 0x7A, 0xBB, 0x77, 0x3B, 0x72 ]
+    # Hash: [ 0x0A, 0xB6, 0x1B, 0xAD, 0xA3, 0x47, 0x83, 0xA6, 0x84, 0x49, 0x08, 0x58, 0xE2, 0x00, 0x5B, 0xBD, 0x2E, 0x9A, 0x1B, 0x13, 0x53, 0xEA, 0xAA, 0xD4, 0x43, 0x37, 0xBF, 0x7A, 0xBB, 0x77, 0x3B, 0x72 ]
+    Hash: [ 0xD1, 0x8C, 0xDF, 0x47, 0x3C, 0x01, 0xAF, 0xBD, 0x90, 0xCE, 0x1D, 0xF0, 0xC3, 0xF3, 0xBB, 0x4A, 0x3D, 0x6C, 0x4E, 0xBF, 0xE4, 0xD7, 0x92, 0xA0, 0x35, 0x89, 0x4C, 0x63, 0xA2, 0x79, 0x0F, 0x8F ]
     Pointers:
 
       GameState:
         Name: GameState
         Description: Game State Base Pointer
-        Address: 0x0097C9C0
+        Address: 0x97C9C0
 
-      # PlayerState: 
-      #   Name: PlayerState
-      #   Description: Player State Base Pointer
-      #   Address: 0x9E41BC
-      #   Levels:
-      #     - 0x1C8
-      #     - 0x30
+      PlayerState: 
+        Name: PlayerState
+        Description: Player State Base Pointer
+        Address: 0x9E41BC
+        Levels:
+          - 0x14C
 
-      # EnemyState:
-      #   Name: EnemyState
-      #   Description: Enemy State Base Pointer
-      #   Address: 0x9E41BC
+      EnemyState:
+        Name: EnemyState
+        Description: Enemy State Base Pointer
+        Address: 0x9E41BC
+        Levels:
+          - 0x154
 
-      # ItemState:
-      #   Name: ItemState
-      #   Description: Item State Base Pointer
-      #   Address: 0x9E41BC
+      ItemState:
+        Name: ItemState
+        Description: Item State Base Pointer
+        Address: 0x97C9C0
 
 
 # State Definitions
 StatePointers:
 
-  # GameMode:
-  #   Name: GameMode
-  #   Description: Game Mode
-  #   Address: GameState
-  #   Offset: 0x20
-  #   Type: Int
+  GameMode:
+    Name: GameMode
+    Description: Game Mode
+    Address: GameState
+    Offset: 0x20
+    Type: Int
 
-  # Difficulty:
-  #   Name: Difficulty
-  #   Description: Difficulty
-  #   Address: GameState
-  #   Offset: 0x24
-  #   Type: Int
+  Difficulty:
+    Name: Difficulty
+    Description: Difficulty
+    Address: GameState
+    Offset: 0x24
+    Type: Int
 
   Character:
     Name: Character
@@ -62,82 +65,137 @@ StatePointers:
     Offset: 0x5110
     Type: Int
 
-  # CostumeID:
-  #   Name: CostumeID
-  #   Description: Character Costume
-  #   Address: GameState
-  #   Offset: 0x5114
-  #   Type: Int
+  CostumeID:
+    Name: CostumeID
+    Description: Character Costume
+    Address: GameState
+    Offset: 0x5114
+    Type: Int
 
-  # ChangePlayer:
-  #   Name: ChangePlayer
-  #   Description: Change Player ID
-  #   Address: GameState
-  #   Offset: 0x5118
-  #   Type: Int
+  ChangePlayer:
+    Name: ChangePlayer
+    Description: Change Player ID
+    Address: GameState
+    Offset: 0x5118
+    Type: Int
 
-  # DisplayMode:
-  #   Name: DisplayMode
-  #   Description: Game Display Mode
-  #   Address: GameState
-  #   Offset: 0x511C
-  #   Type: Int
+  DisplayMode:
+    Name: DisplayMode
+    Description: Game Display Mode
+    Address: GameState
+    Offset: 0x511C
+    Type: Int
 
-  # VoiceType:
-  #   Name: VoiceType
-  #   Description: Character Voice Type
-  #   Address: GameState
-  #   Offset: 0x5120
-  #   Type: Int
+  VoiceType:
+    Name: VoiceType
+    Description: Character Voice Type
+    Address: GameState
+    Offset: 0x5120
+    Type: Int
 
-  # ShadowQuality:
-  #   Name: ShadowQuality
-  #   Description: Shadow Quality
-  #   Address: GameState
-  #   Offset: 0x5104
-  #   Type: Int
+  ShadowQuality:
+    Name: ShadowQuality
+    Description: Shadow Quality
+    Address: GameState
+    Offset: 0x5104
+    Type: Int
 
-  # IsSubWepAmmo:
-  #   Name: IsSubWepAmmo
-  #   Description: Sub-Weapon Ammo
-  #   Address: GameState
-  #   Offset: 0x5128
-  #   Type: Int
+  IsSubWepAmmo:
+    Name: IsSubWepAmmo
+    Description: Sub-Weapon Ammo
+    Address: GameState
+    Offset: 0x5128
+    Type: Int
 
-  # FrameCounter:
-  #   Name: FrameCounter
-  #   Description: Game Frame Counter
-  #   Address: GameState
-  #   Offset: 0xE4738
-  #   Type: Float
+  FrameCounter:
+    Name: FrameCounter
+    Description: Game Frame Counter
+    Address: GameState
+    Offset: 0xE4738
+    Type: Float
 
-  # PlayTime:
-  #   Name: PlayTime
-  #   Description: Game Play Time
-  #   Address: GameState
-  #   Offset: 0xE474C
-  #   Type: Float
+  PlayTime:
+    Name: PlayTime
+    Description: Game Play Time
+    Address: GameState
+    Offset: 0xE474C
+    Type: Float
 
-  # IsStartGame:
-  #   Name: IsStartGame
-  #   Description: Is Start Game
-  #   Address: GameState
-  #   Offset: 0xE477E
-  #   Type: Byte
+  IsStartGame:
+    Name: IsStartGame
+    Description: Is Start Game
+    Address: GameState
+    Offset: 0xE477E
+    Type: Byte
 
-  # IsLoadGame:
-  #   Name: IsLoadGame
-  #   Description: Is Load Game
-  #   Address: GameState
-  #   Offset: 0xE477C
-  #   Type: Byte
-
-
-  # Player:
-  #   Name: Player
-  #   Description: Player
-  #   Address: PlayerState
-  #   Offset: 0x13BC
-  #   Type: PlayerStruct
+  IsLoadGame:
+    Name: IsLoadGame
+    Description: Is Load Game
+    Address: GameState
+    Offset: 0xE477C
+    Type: Byte
 
 
+  Player:
+    Name: Player
+    Description: Player
+    Address: PlayerState
+    Offset: 0x13BC
+    Type: PlayerStruct
+
+
+ReplicaPointers:
+  
+  Enemies:
+    Name: Enemies
+    Description: Enemy Statuses
+    Address: EnemyState
+    Offset: 0x13BC
+    Type: EnemyStruct
+    Replicas: 47
+    Padding: 0x8
+
+  Inventory:
+    Name: Inventory
+    Description: Inventory Items
+    Address: ItemState
+    Offset: 0x38
+    Type: ItemStruct
+    Replicas: 10
+    Padding: 0x8
+
+
+StateStructs:
+
+  PlayerStruct:
+    Name: PlayerStruct
+    Description: Player Status
+    Fields:
+      - Name: CurrentHP
+        Offset: 0x0
+        Type: Int
+      - Name: MaxHP
+        Offset: 0x4
+        Type: Int
+
+  EnemyStruct:
+    Name: EnemyStruct
+    Description: Enemy Status
+    Fields:
+      - Name: CurrentHP
+        Offset: 0x0
+        Type: Int
+      - Name: MaxHP
+        Offset: 0x4
+        Type: Int
+  
+  ItemStruct:
+    Name: ItemStruct
+    Description: Inventory Item
+    Fields:
+      - Name: Item
+        Offset: 0x0
+        Type: Int
+      - Name: Quantity
+        Offset: 0x4
+        Type: Int
