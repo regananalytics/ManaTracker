@@ -1,3 +1,0 @@
-[submodule "src/ManaServer"]
-	path = src/ManaServer
-	url = https://github.com/regananalytics/ManaServer.git
