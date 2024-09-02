@@ -3,7 +3,6 @@ from typing import Callable
 import zmq
 from zmq.asyncio import Context, Socket
 
-from ManaTracker.config import CONFIG
 from ManaTracker.state import State
 
 

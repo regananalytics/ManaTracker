@@ -1,8 +1,8 @@
-from ManaTracker.config import Config, CONFIG
+from ManaTracker.config import Config
 
 class State:
 
-    def __init__(self, config: Config = CONFIG):
+    def __init__(self, config: Config):
         self.config = config
         self.item_enums = sorted(
             [
