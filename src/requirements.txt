@@ -1,0 +1,5 @@
+cx_freeze
+dash
+pillow
+pyyaml
+pyzmq
