@@ -5,7 +5,7 @@ class State:
     def __init__(self, config: Config):
         self.config = config
         self.item_enums = sorted(
-            [
+             [
                 item
                 for row in self.config.layout.item_grid
                 for item in row

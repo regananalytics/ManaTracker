@@ -5,8 +5,16 @@ PORT: 8080
 
 DEBUG: false
 
+# Icon Sheet Properties
+SHEET_FILE: items.png
+SHEET_ROWS: 18
+SHEET_COLS: 7
+SHEET_ITEM_SIZE: 128 # Size on sheet
+SHEET_WIDTH: 896
+SHEET_HEIGHT: 2306
+
 # Icon Parameters
-ICON_SIZE: 64
+ICON_SIZE: 64 # Displayed size
 ICON_PADDING: "0px" # Padding between Icons in grid
 
 # Icon Label Parameters

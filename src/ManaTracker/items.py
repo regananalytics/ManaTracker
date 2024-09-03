@@ -1,28 +1,24 @@
-from pathlib import Path
-from PIL import Image
+from ManaTracker.config import Config
 
-ICON_PAGE = Path(__file__).parent / "icon_page.png"
+class Items:
 
-ICON_ENUM = [*range(1, 8), *range(10, 89), *range(90, 130)]
+    def __init__(self, config: Config):
+        self.display_width = config.layout.icon_size
+        self.display_height = config.layout.icon_size
 
-def gen_icons(page_path: Path, rows: int, cols: int):
-    page = Image.open(page_path)
+        self.sheet_rows = config.layout.sheet_rows
+        self.sheet_cols = config.layout.sheet_cols
+        self.sheet_item_size = config.layout.sheet_item_size
+        self.sheet_width = config.layout.sheet_width
+        self.sheet_height = config.layout.sheet_height
 
-    page_width, page_height = page.size
-    width = page_width // cols
-    height = page_height // rows
+        self.items = config.items
 
-    n = 0
-    for i in range(rows):
-        for j in range(cols):
-            top = i * height
-            left = j * width
-            right = left + width
-            bottom = top + height
-            icon = page.crop((left, top, right, bottom))
-            icon.save(page_path.parent / f'{ICON_ENUM[n]}.png')
-            n += 1
-            
+        self.scale_width = self.sheet_width * (self.display_width / self.sheet_item_size)
+        self.scale_height = self.sheet_height * (self.display_height / self.sheet_item_size)
 
-if __name__ == "__main__":
-    gen_icons(ICON_PAGE, 18, 7)
+    def get_icon_loc(self, enum: int):
+        row, col = self.items[str(enum)]['page']
+        x_offset = ((col - 1) * self.sheet_item_size) * (self.display_width / self.sheet_item_size)
+        y_offset = ((row - 1) * self.sheet_item_size) * (self.display_height / self.sheet_item_size)
+        return x_offset, y_offset

@@ -3,31 +3,32 @@ import threading
 
 from ManaTracker.config import Config
 from ManaTracker.client import run_client
+from ManaTracker.items import Items
 from ManaTracker.state import State
 
 
 class ManaTracker:
 
     def __init__(self, args):
-        self.game = args.game
-        self.cfg_dir = args.cfg
-        self.memconf = args.mem
-        self.host = args.host
-        self.port = args.port
-        self.debug = args.debug
-
-        self.config = Config(self.game, self.cfg_dir)
+        self.config = Config(args)
+        self.items = Items(self.config)
 
         self.app: App = self._init_app()
         self.server = self.app.server
         self.state = State(self.config)
 
     def run(self, *args, **kwargs):
-        self.app.run(self.host, self.port, self.debug, self.state, *args, **kwargs)
+        self.app.run(
+            self.config.host, 
+            self.config.port, 
+            self.config.debug, 
+            self.state, 
+            *args, **kwargs
+        )
 
     def _init_app(self):
-        self.app = App(__name__)
-        self.app.title = f'ManaTracker - {self.config.layout.title}'
+        app = App(__name__, assets_folder="../../cfg/re1/")
+        app.title = f'ManaTracker - {self.config.layout.title}'
 
         items = []
         layout_div = []
@@ -38,16 +39,7 @@ class ManaTracker:
                     html.Div(
                         [
                             # Image
-                            html.Img(
-                                id=f"item_image_{item}",
-                                src=self.app.get_asset_url(f'{item}.png'),
-                                height=self.config.layout.icon_size, 
-                                width=self.config.layout.icon_size,
-                                style={
-                                    'opacity': 100,
-                                    'filter': f'grayscale({0}%)',
-                                },
-                            ),
+                            self._item_img(item),
                             # Label
                             html.Div(
                                 (
@@ -82,7 +74,7 @@ class ManaTracker:
             )
         )
 
-        self.app.layout = html.Div(
+        app.layout = html.Div(
             layout_div,
             style={
                 'backgroundColor': self.config.layout.background_color,
@@ -101,17 +93,46 @@ class ManaTracker:
             },
         ]
 
-        @self.app.callback(
-            [Output(f"item_image_{item}", "style") for item in items],
-            Input("grid-update", "n_intervals"),
-        )
-        def item_image_state(interval):
-            # return [_img_styles[state.get_item_state(i)] for i in items]
-            ret = []
-            for i in items:
-                s = self.state.get_item_state(i)
-                ret.append(_img_styles[s])
-            return ret
+        # @app.callback(
+        #     [Output(f"item_img_{item}", "style") for item in items],
+        #     Input("grid-update", "n_intervals"),
+        # )
+        # def item_image_state(interval):
+        #     ret = []
+        #     for i in items:
+        #         s = self.state.get_item_state(i)
+        #         ret.append(_img_styles[s])
+        #     return ret
+        
+        return app
+
+
+    def _item_img(self, item):
+        if item > 0:
+            x_offset, y_offset = self.items.get_icon_loc(item)
+            return html.Div(
+                id=f"item_img_{item}",
+                style={
+                    'width': f'{self.items.display_width}px',
+                    'height': f'{self.items.display_height}px',
+                    'background-image': f'url(assets/{self.config.layout.sheet_file})',
+                    'background-position': f'-{x_offset}px -{y_offset}px',
+                    'background-size': f'{self.items.sheet_width}px {self.items.sheet_height}px',
+                    'background-repeat': 'no-repeat',
+                    'display': 'inline-block',
+                    'background-size': f'{self.items.scale_width}px {self.items.scale_height}px',
+                    'opacity': 100,
+                    'filter': f'grayscale({0}%)',
+                }
+            )
+        else:
+            return html.Div(
+                id=f"item_img_{item}",
+                style={
+                    'width': f'{self.items.display_width}px',
+                    'height': f'{self.items.display_height}px',
+                }
+            )
 
 
 class App(Dash):

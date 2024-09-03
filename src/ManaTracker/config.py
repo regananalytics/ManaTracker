@@ -4,23 +4,41 @@ import logging
 from pathlib import Path
 import yaml
 
-import ManaTracker
-
 logger = logging.getLogger(__name__)
 
+DEFAULT_CFG_DIR = Path(__file__) / '..' / '..' / '..' / 'cfg'
+REQUIRED_CONFIG_FILES = {
+    "cfg.yaml",
+    "items.json",
+    "items.png",
+    "mem.yaml",
+}
 
 class Config:
 
-    def __init__(self, game: str, cfg_dir: str | None = None):
-        self.game = game
-        self._cfg_dir = cfg_dir or Path(ManaTracker.__file__).parent / '..' / '..' / 'cfg'
-        self._game_cfg = self._cfg_dir / self.game
+    def __init__(self, args):
+        self.game: str = args.game.lower()
 
-        self._layout_cfg_file = self._game_cfg / 'cfg.yaml'
-        self._items_cfg_file = self._game_cfg / 'items.json'
+        self.host: str = args.host
+        self.port: int = args.port
+        self.debug: bool = args.debug
+
+        # Verify game config exists in config directory and load
+        if args.cfg is not None:
+            cust_cfg_dir = Path(args.cfg)
+            self._is_game_cfg(self.game, cust_cfg_dir)
+            self.cfg_dir = cust_cfg_dir
+        else:
+            self._is_game_cfg(self.game)
+            self.cfg_dir = DEFAULT_CFG_DIR
+
+        _game_cfg_dir = self.cfg_dir / self.game
+        self._layout_cfg_file = _game_cfg_dir / 'cfg.yaml'
+        self._items_cfg_file = _game_cfg_dir / 'items.json'
 
         self._items = None
         self._layout = None
+        self._sheet = _game_cfg_dir / 'items.png'
         
     @property
     def items(self):
@@ -44,6 +62,21 @@ class Config:
                 )
             self._layout = LayoutConfig(layout_cfg)
         return self._layout
+    
+    @property
+    def sheet(self):
+        return self._sheet
+
+    def _is_game_cfg(self, game: str, cfg_dir: Path | None = None):
+        cfg_dir = cfg_dir or DEFAULT_CFG_DIR
+        if not cfg_dir.exists():
+            raise ValueError(f'The config directory could not be found: {cfg_dir.resolve()}')
+        game_cfg_dir = cfg_dir / game
+        if not game_cfg_dir.exists():
+            raise ValueError(f'A game config matching "{game}" could not be found in config directory {cfg_dir.resolve()}')
+        missing = REQUIRED_CONFIG_FILES - {f.name for f in game_cfg_dir.iterdir()}
+        if missing:
+            raise ValueError(f'The game config is missing required config files: {missing}')
 
 
 class LayoutConfig:
@@ -66,3 +99,9 @@ class LayoutConfig:
         self.label_pos_bottom:   str = layout_config.get('ICON_LABEL_POS_BOTTOM', '0px')
         self.label_pos_right:    str = layout_config.get('ICON_LABEL_POS_RIGHT', '0px')
         self.label_color:        int = layout_config.get('ICON_LABEL_COLOR', 'white')
+        self.sheet_file:         str = layout_config.get('SHEET_FILE', 'items.png')
+        self.sheet_cols:         int = layout_config.get('SHEET_COLS', None)
+        self.sheet_rows:         int = layout_config.get('SHEET_ROWS', None)
+        self.sheet_item_size:    int = layout_config.get('SHEET_ITEM_SIZE', None)
+        self.sheet_width:        int = layout_config.get('SHEET_WIDTH', None)
+        self.sheet_height:       int = layout_config.get('SHEET_HEIGHT', None)

@@ -8,8 +8,11 @@
             "name": "Python Debugger: Module",
             "type": "debugpy",
             "request": "launch",
-            "cwd": "${workspaceFolder}/src/python/",
+            "cwd": "${workspaceFolder}/src/",
             "module": "ManaTracker",
+            "args": [
+                "re1",
+            ],
             "justMyCode": false
         },
     ],
