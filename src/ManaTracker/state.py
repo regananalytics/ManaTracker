@@ -1,3 +1,4 @@
+from random import random
 from ManaTracker.config import Config
 
 class State:

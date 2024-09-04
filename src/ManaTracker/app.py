@@ -1,4 +1,4 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Patch, Output
 import threading
 
 from ManaTracker.config import Config
@@ -93,16 +93,18 @@ class ManaTracker:
             },
         ]
 
-        # @app.callback(
-        #     [Output(f"item_img_{item}", "style") for item in items],
-        #     Input("grid-update", "n_intervals"),
-        # )
-        # def item_image_state(interval):
-        #     ret = []
-        #     for i in items:
-        #         s = self.state.get_item_state(i)
-        #         ret.append(_img_styles[s])
-        #     return ret
+        @app.callback(
+            [Output(f"item_img_{item}", "style") for item in items],
+            Input("grid-update", "n_intervals"),
+        )
+        def item_image_state(interval):
+            patches = []
+            for i in items:
+                p = Patch()
+                s = self.state.get_item_state(i)
+                p.update(_img_styles[s])
+                patches.append(p)
+            return patches
         
         return app
 
