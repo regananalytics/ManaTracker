@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="libs\MemCore\src\MemCore\MemCore.csproj" />
+    <ProjectReference Include="..\libs\MemCore\src\MemCore\MemCore.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

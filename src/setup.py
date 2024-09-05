@@ -1,7 +1,8 @@
 from cx_Freeze import setup, Executable
+import os
 from pathlib import Path
-# from setuptools import Command
-# import zipfile
+from setuptools import Command
+import shutil
 
 from ManaTracker import __about__
 
@@ -9,19 +10,27 @@ name = __about__.__name__
 exe_name = name + '.exe'
 
 # Path mapping
-_src_dir = Path(__file__).parent
-_pkg_dir = _src_dir / name
-_root_dir = _src_dir.parent
-_build_dir = _root_dir / 'build'
-_cfg_dir = _root_dir / 'cfg'
+src_dir = Path(__file__).parent
+pkg_dir = src_dir / name
+root_dir = src_dir.parent
+build_dir = root_dir / 'build' / 'ManaTracker'
+cfg_dir = root_dir / 'cfg'
+zip_dir = root_dir / 'build'
 
-main_script = _pkg_dir / '__main__.py'
-build_dir = _build_dir # ManaTracker/build
+main_script = pkg_dir / '__main__.py'
 
+# Dependencies
+requirements = []
+with open(src_dir / 'requirements.txt', 'r') as f:
+    requirements += [line for line in f]
+
+
+# Build
 excludes = []
 
 include_files = [
-    (_cfg_dir, 'cfg'), 
+    (cfg_dir, 'cfg'), 
+    (root_dir / 'LICENSE', ''),
 ]
 
 packages = [
@@ -36,9 +45,6 @@ executables = [
     )
 ]
 
-requirements = []
-with open(_src_dir / 'requirements.txt', 'r') as f:
-    requirements += [line for line in f]
 
 setup(
     name=name,

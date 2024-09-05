@@ -5,7 +5,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="ManaTracker command-line options")
     
     # Required game argument
-    parser.add_argument("game", type=str, help="The name of the game config to use")
+    parser.add_argument("--game", default="re1", type=str, help="The name of the game config to use")
 
     # Options
     parser.add_argument('-c', '--cfg', '--config', type=str, help='Path to the tracker config file')

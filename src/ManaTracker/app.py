@@ -27,7 +27,7 @@ class ManaTracker:
         )
 
     def _init_app(self):
-        app = App(__name__, assets_folder="../../cfg/re1/")
+        app = App(f'ManaTracker.{self.config.game.upper()}', assets_folder="../../cfg/re1/")
         app.title = f'ManaTracker - {self.config.layout.title}'
 
         items = []

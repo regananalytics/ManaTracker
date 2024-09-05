@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build ProcessMemory",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/ProcessMemory.csproj",
+                "--configuration", "Release",
+                "--property:Platform=x86"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build MemCore",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "src/ManaServer/libs/MemCore/src/MemCore/MemCore.csproj",
+                "--debug"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build ManaServer",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "src/ManaServer/src/ManaServer.csproj",
+                "--debug"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
