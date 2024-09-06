@@ -13,12 +13,14 @@ class State:
             ]
         )
         self.item_states = {k:ItemState(k) for k in self.item_enums}
+        self._got_update: bool = False
 
     def get_item_state(self, enum) -> bool:
-        return 1 if self.item_states[enum].state else 0
+        return 1 if not self._got_update or self.item_states[enum].state else 0
     
     async def callback(self, message: dict):
         # Get inventory
+        self._got_update = True
         inventory = {
             k:v for k,v in message.items()
             if 'Inventory' in k and 'Item' in k

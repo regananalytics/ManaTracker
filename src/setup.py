@@ -1,8 +1,5 @@
 from cx_Freeze import setup, Executable
-import os
 from pathlib import Path
-from setuptools import Command
-import shutil
 
 from ManaTracker import __about__
 

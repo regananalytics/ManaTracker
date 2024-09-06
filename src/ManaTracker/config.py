@@ -6,13 +6,19 @@ import yaml
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_CFG_DIR = Path(__file__) / '..' / '..' / '..' / 'cfg'
 REQUIRED_CONFIG_FILES = {
     "cfg.yaml",
     "items.json",
     "items.png",
     "mem.yaml",
 }
+
+path = Path(__file__).parent
+rel_cfg_dirs = [
+    "../../cfg/", # Dev
+    "../../../cfg/", # Build
+]
+
 
 class Config:
 
@@ -29,16 +35,24 @@ class Config:
             self._is_game_cfg(self.game, cust_cfg_dir)
             self.cfg_dir = cust_cfg_dir
         else:
-            self._is_game_cfg(self.game)
-            self.cfg_dir = DEFAULT_CFG_DIR
+            # Try default paths
+            for rel_path in rel_cfg_dirs:
+                full_path = (path / rel_path).resolve()
+                if full_path.exists():
+                    try:
+                        self._is_game_cfg(self.game, full_path)
+                        break
+                    except:
+                        continue
+            self.cfg_dir = full_path
 
-        _game_cfg_dir = self.cfg_dir / self.game
-        self._layout_cfg_file = _game_cfg_dir / 'cfg.yaml'
-        self._items_cfg_file = _game_cfg_dir / 'items.json'
+        self.game_cfg_dir = self.cfg_dir / self.game
+        self._layout_cfg_file = self.game_cfg_dir / 'cfg.yaml'
+        self._items_cfg_file = self.game_cfg_dir / 'items.json'
 
         self._items = None
         self._layout = None
-        self._sheet = _game_cfg_dir / 'items.png'
+        self._sheet = self.game_cfg_dir / 'items.png'
         
     @property
     def items(self):

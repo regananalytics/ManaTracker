@@ -28,12 +28,12 @@ GameVersions:
         Levels:
           - 0x14C
 
-      EnemyState:
-        Name: EnemyState
-        Description: Enemy State Base Pointer
-        Address: 0x9E41BC
-        Levels:
-          - 0x154
+      # EnemyState:
+      #   Name: EnemyState
+      #   Description: Enemy State Base Pointer
+      #   Address: 0x9E41BC
+      #   Levels:
+      #     - 0x154
 
       ItemState:
         Name: ItemState
@@ -146,14 +146,14 @@ StatePointers:
 
 ReplicaPointers:
   
-  Enemies:
-    Name: Enemies
-    Description: Enemy Statuses
-    Address: EnemyState
-    Offset: 0x13BC
-    Type: EnemyStruct
-    Replicas: 47
-    Padding: 0x8
+  # Enemies:
+  #   Name: Enemies
+  #   Description: Enemy Statuses
+  #   Address: EnemyState
+  #   Offset: 0x13BC
+  #   Type: EnemyStruct
+  #   Replicas: 47
+  #   Padding: 0x8
 
   Inventory:
     Name: Inventory

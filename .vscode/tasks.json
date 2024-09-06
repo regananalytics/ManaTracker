@@ -21,6 +21,7 @@
             "args": [
                 "build",
                 "src/ManaServer/libs/MemCore/src/MemCore/MemCore.csproj",
+                "--no-dependencies",
                 "--debug"
             ],
             "group": "build",

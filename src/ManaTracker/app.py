@@ -1,4 +1,5 @@
 from dash import Dash, dcc, html, Input, Patch, Output
+from pathlib import Path
 import threading
 
 from ManaTracker.config import Config
@@ -27,7 +28,7 @@ class ManaTracker:
         )
 
     def _init_app(self):
-        app = App(f'ManaTracker.{self.config.game.upper()}', assets_folder="../../cfg/re1/")
+        app = App(f'ManaTracker.{self.config.game.upper()}', assets_folder=self.config.game_cfg_dir)
         app.title = f'ManaTracker - {self.config.layout.title}'
 
         items = []

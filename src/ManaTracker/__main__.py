@@ -1,4 +1,5 @@
 import argparse
+
 from ManaTracker.app import ManaTracker
 
 def parse_args():
