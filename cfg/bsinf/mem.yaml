@@ -1,0 +1,85 @@
+# MemCfg - Bioshock Infinite (2013)
+# ? Patch
+
+GameName: Bioshock Infinite (2013)
+GameID: Bioshock Infinite
+GameExe: BioshockInfinite
+
+
+# Game Version Hashes and Addresses
+GameVersions:
+
+  Bioshock Infinite:
+    Name: BioshockInfinite
+    Description: Bioshock Infinite (2013)
+    # Hash: [ 0x0A, 0xB6, 0x1B, 0xAD, 0xA3, 0x47, 0x83, 0xA6, 0x84, 0x49, 0x08, 0x58, 0xE2, 0x00, 0x5B, 0xBD, 0x2E, 0x9A, 0x1B, 0x13, 0x53, 0xEA, 0xAA, 0xD4, 0x43, 0x37, 0xBF, 0x7A, 0xBB, 0x77, 0x3B, 0x72 ]
+    Hash: [ 0xD1, 0x8C, 0xDF, 0x47, 0x3C, 0x01, 0xAF, 0xBD, 0x90, 0xCE, 0x1D, 0xF0, 0xC3, 0xF3, 0xBB, 0x4A, 0x3D, 0x6C, 0x4E, 0xBF, 0xE4, 0xD7, 0x92, 0xA0, 0x35, 0x89, 0x4C, 0x63, 0xA2, 0x79, 0x0F, 0x8F ]
+    Pointers:
+
+      PositionBase:
+        Name: PlayerBase
+        Description: Player Base Pointer
+        Address: 0x00B9F058
+
+      CameraBase:
+        Name: CameraBase
+        Description: Camera Base Pointer
+        Address: 0x00F679A0
+
+# State Definitions
+StatePointers:
+
+  X:
+    Name: X
+    Description: Player Position X
+    Address: PlayerBase
+    Levels:
+      - 0x28
+    Offset: 0x44
+    Type: Float
+
+  Y:
+    Name: Y
+    Description: Player Position Y
+    Address: PlayerBase
+    Levels:
+      - 0x28
+    Offset: 0x48
+    Type: Float
+
+  Z:
+    Name: Z
+    Description: Player Position Z
+    Address: PlayerBase
+    Levels:
+      - 0x28
+    Offset: 0x4C 
+    Type: Float
+
+  Pitch:
+    Name: Pitch
+    Description: Camera Pitch
+    Address: CameraBase
+    Levels:
+      - 0x8C
+    Offset: 0x50
+    Type: Short
+
+  Yaw:
+    Name: Yaw
+    Description: Camera Yaw
+    Address: CameraBase
+    Levels:
+      - 0x8C
+    Offset: 0x54
+    Type: Short
+
+  Roll:
+    Name: Roll
+    Description: Camera Roll
+    Address: CameraBase
+    Levels:
+      - 0x8C
+    Offset: 0x52
+    Type: Short
+
