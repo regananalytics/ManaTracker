@@ -10,21 +10,26 @@ namespace ManaServer
         static void Main(string[] args)
         {
             Console.WriteLine("\nStarting ManaServer...");
-            string gameName = "re1";
-
-            // 1. Set up the default config directory relative to the app root
-            var defaultConfigPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
 
             // Build configuration using cascading configuration sources
+            var defaultConfigPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
             var configurationBuilder = new ConfigurationBuilder()
                 .AddJsonFile(defaultConfigPath, optional: false, reloadOnChange: true);
 
             var appConf = configurationBuilder.Build();
-            var pathConf = appConf.GetSection("Path");
 
+            // Top-level settings
+            string gameName = appConf["Game"] ?? "re1";
+            bool verbose = appConf["Output:verbose"] == "true";
+            int interval = int.Parse(appConf["Output:interval"] ?? "1000");
+
+            // Path Settings
+            var pathConf = appConf.GetSection("Path");
             string configPath = "";
             foreach (var setting in pathConf.GetChildren())
             {
+                if (setting.Value == null)
+                    continue;
                 configPath = Path.GetFullPath(
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, setting.Value)
                 );
@@ -37,9 +42,30 @@ namespace ManaServer
             Console.WriteLine("\n");
 
             string gameConfFile = Path.Combine(configPath, gameName, "mem.yaml");
-            var memoryCore = new MemoryCore(gameConfFile, false);
 
-            var memQ = new MemQServer("tcp://*:5556", memoryCore.OutputState);
+            MemoryCore memoryCore;
+            // Start MemCore
+            Console.WriteLine("Waiting to connect to game...");
+            while (true)
+            {
+                try
+                {
+                    memoryCore = new MemoryCore(gameConfFile, false);
+                    break;
+                }
+                catch (InvalidOperationException)
+                {
+                    continue;
+                }
+                catch (System.Exception ex)
+                {
+                    Console.WriteLine($"An exception occured in MemCore: {ex.Message}");
+                    throw;
+                }
+            }
+            Console.WriteLine("Connected!\n");
+            
+            var memQ = new MemQServer("tcp://*:5556", memoryCore.OutputState, interval, verbose);
 
             Console.WriteLine("Starting ZMQ Server...");
             memQ.Start();
@@ -49,6 +75,7 @@ namespace ManaServer
                 Console.WriteLine("Stopping ManaServer...");
                 memQ.Stop();
                 e.Cancel = true;
+                Environment.Exit(0);
             };
 
             Console.WriteLine("Press Ctrl-C to stop ManaServer.");
