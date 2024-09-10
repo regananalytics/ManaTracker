@@ -2,14 +2,27 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build ProcessMemory",
+            "label": "Build ProcessMemory x86",
             "type": "process",
             "command": "dotnet",
             "args": [
                 "build",
                 "src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/ProcessMemory.csproj",
-                "--configuration", "Release",
+                "--configuration", "Debug",
                 "--property:Platform=x86"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build ProcessMemory x64",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/ProcessMemory.csproj",
+                "--configuration", "Debug",
+                "--property:Platform=x64"
             ],
             "group": "build",
             "problemMatcher": "$msCompile"
@@ -24,7 +37,6 @@
                 "--no-dependencies",
                 "--debug"
             ],
-            "group": "build",
             "problemMatcher": "$msCompile"
         },
         {
@@ -36,8 +48,44 @@
                 "src/ManaServer/src/ManaServer.csproj",
                 "--debug"
             ],
-            "group": "build",
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Copy Cfg",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (Test-Path -Path 'build/cfg')",
+                "{ Remove-Item -Recurse -Force 'build/cfg'};",
+                "Copy-Item -Recurse 'cfg' 'build/cfg'"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Copy Build",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (Test-Path -Path 'build/ManaServer')",
+                "{ Remove-Item -Recurse -Force 'build/ManaServer'};",
+                "Copy-Item -Recurse 'src/ManaServer/src/bin/Debug/net8.0/win-x86' 'build/ManaServer'"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build",
+            "dependsOn": [
+                "Build ManaServer",
+                "Copy Cfg",
+                "Copy Build"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
