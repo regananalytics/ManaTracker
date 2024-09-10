@@ -1,4 +1,3 @@
-from random import random
 from ManaTracker.config import Config
 
 class State:
@@ -21,6 +20,10 @@ class State:
     async def callback(self, message: dict):
         # Get inventory
         self._got_update = True
+        frame_counter = [v for k,v in message.items() if "FrameCounter" in k]
+        frame = frame_counter[0] if frame_counter != [] else None
+        if frame == 0:
+            self.reset()
         inventory = {
             k:v for k,v in message.items()
             if 'Inventory' in k and 'Item' in k
@@ -34,6 +37,10 @@ class State:
                     quantity = message[f'Inventory[{key_num}].Quantity']
                     self.item_states[enum].quantity = quantity
 
+    def reset(self):
+        for state in self.item_states.values():
+            state.reset()
+
 
 class ItemState:
 
@@ -44,3 +51,6 @@ class ItemState:
     @property
     def state(self) -> bool:
         return self.quantity > 0
+
+    def reset(self):
+        self.quantity = 0
