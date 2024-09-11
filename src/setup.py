@@ -4,7 +4,6 @@ from pathlib import Path
 from ManaTracker import __about__
 
 name = __about__.__name__
-exe_name = name + '.exe'
 
 # Path mapping
 src_dir = Path(__file__).parent
@@ -12,9 +11,9 @@ pkg_dir = src_dir / name
 root_dir = src_dir.parent
 build_dir = root_dir / 'build' / 'ManaTracker'
 cfg_dir = root_dir / 'cfg'
-zip_dir = root_dir / 'build'
 
 main_script = pkg_dir / '__main__.py'
+launcher_script = pkg_dir / 'launcher.py'
 
 # Dependencies
 requirements = []
@@ -38,7 +37,12 @@ executables = [
     Executable(
         main_script,
         base=None,
-        target_name=exe_name
+        target_name=name + "UI.exe"
+    ),
+    Executable(
+        launcher_script,
+        base=None,
+        target_name=name + ".exe"
     )
 ]
 
