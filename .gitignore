@@ -2,6 +2,8 @@ __pycache__/
 
 bin/
 obj/
+.vs/
 
 build/*
-!build/.gitkeep
+
+*.zip

@@ -11,7 +11,6 @@
                 "--configuration", "Debug",
                 "--property:Platform=x86"
             ],
-            "group": "build",
             "problemMatcher": "$msCompile"
         },
         {
@@ -24,8 +23,22 @@
                 "--configuration", "Debug",
                 "--property:Platform=x64"
             ],
-            "group": "build",
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Copy ProcessMemory dlls",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (Test-Path -Path 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory32.dll')",
+                "{ Remove-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory32.dll'};",
+                "if (Test-Path -Path 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory64.dll')",
+                "{ Remove-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory64.dll'};",
+                "Copy-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/bin/x86/Debug/netstandard2.0/ProcessMemory32.dll' 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory32.dll';",
+                "Copy-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/bin/x64/Debug/netstandard2.0/ProcessMemory64.dll' 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory64.dll';"
+            ],
+            "problemMatcher": [],
         },
         {
             "label": "Build MemCore",
@@ -40,7 +53,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "Build ManaServer",
+            "label": "Build ManaServer x86",
             "type": "process",
             "command": "dotnet",
             "args": [
@@ -48,7 +61,19 @@
                 "src/ManaServer/src/ManaServer.csproj",
                 "--debug"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build ManaTracker",
+            "type": "process",
+            "command": "C:/Users/verti/anaconda3/envs/mana/python.exe",
+            "args": [
+                "src/setup.py",
+                "build"
+            ],
+            "problemMatcher": [],
+            "group": "build"
         },
         {
             "label": "Copy Cfg",
@@ -60,7 +85,8 @@
                 "{ Remove-Item -Recurse -Force 'build/cfg'};",
                 "Copy-Item -Recurse 'cfg' 'build/cfg'"
             ],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": "build"
         },
         {
             "label": "Copy Build",
@@ -75,17 +101,90 @@
             "problemMatcher": []
         },
         {
-            "label": "Build",
+            "label": "Clean Build Dir",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (Test-Path -Path 'build')",
+                "{ Remove-Item -Recurse -Force 'build'};",
+                "New-Item -Name 'build' -ItemType 'directory';"
+            ],
+            "problemMatcher": [],
+        },
+        {
+            "label": "Copy Release Files",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "Copy-Item 'LICENSE' 'build/';",
+                "Copy-Item 'README.md' 'build/';",
+                "Set-Content -Path 'build/version.txt' -Value '${input:versionString}'",
+            ]
+        },
+        {
+            "label": "Zip Build",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Compress-Archive -Path 'build' -DestinationPath 'ManaTracker_${input:versionString}.zip' -Force"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build ProcessMemory",
             "dependsOn": [
-                "Build ManaServer",
+                "Build ProcessMemory x86",
+                "Build ProcessMemory x64",
+                "Copy ProcessMemory dlls"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build ManaServer",
+            "dependsOn": [
+                "Build ManaServer x86",
                 "Copy Cfg",
                 "Copy Build"
             ],
+            "dependsOrder": "sequence",
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
+        },
+        {
+            "label": "Build All",
+            "dependsOn": [
+                "Build ProcessMemory",
+                "Build ManaServer",
+                "Build ManaTracker",
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build Release",
+            "dependsOn": [
+                "Clean Build Dir",
+                "Copy Release Files",
+                "Build ProcessMemory",
+                "Build ManaServer",
+                "Build ManaTracker",
+                "Zip Build",
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "versionString",
+            "type": "promptString",
+            "description": "Enter the build version"
         }
     ]
 }
