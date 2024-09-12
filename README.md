@@ -3,6 +3,18 @@
 
  This repo is a WIP.
 
+## Instructions
+- Download latest release
+- Unzip the archive anywhere you'd like. Documents or Desktop are fine.
+- Launch ManaTracker/ManaTracker.exe - this will start the RE1 Tracker UI and Server
+- In your browser, go to http://localhost:8080 to view the Tracker UI
+- Launch RE1 and start a new game!
+
+As of v0.0.2, the RE1 Tracker should reset automatically when you return to the menu!
+
+If you have any issues at all, please reach out.
+Cheers!
+
 ## Dependencies
  [ProcessMemory](https://github.com/Squirrelies/ProcessMemory) - Game process memory reading library
  
