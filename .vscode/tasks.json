@@ -69,8 +69,7 @@
             "type": "process",
             "command": "C:/Users/verti/anaconda3/envs/mana/python.exe",
             "args": [
-                "src/setup.py",
-                "build"
+                "src/pyinstaller.py"
             ],
             "problemMatcher": [],
             "group": "build"
@@ -119,7 +118,7 @@
             "args": [
                 "Copy-Item 'LICENSE' 'build/';",
                 "Copy-Item 'README.md' 'build/';",
-                "Set-Content -Path 'build/version.txt' -Value '${input:versionString}'",
+                "Set-Content -Path 'build/version.txt' -Value '${input:versionString}';"
             ]
         },
         {
@@ -127,8 +126,11 @@
             "type": "shell",
             "command": "powershell",
             "args": [
-                "-Command",
-                "Compress-Archive -Path 'build' -DestinationPath 'ManaTracker_${input:versionString}.zip' -Force"
+                "if (Test-Path -Path 'zip')",
+                "{ Remove-Item -Recurse -Force 'zip'};",
+                "Copy-Item -Recurse 'build' 'zip';",
+                "Remove-Item -Recurse -Force 'zip/ManaServer';",
+                "Compress-Archive -Path 'zip/*' -DestinationPath 'ManaTracker_${input:versionString}.zip' -Force",
             ],
             "problemMatcher": [],
             "group": "build"

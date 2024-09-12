@@ -42,10 +42,18 @@ executables = [
     Executable(
         launcher_script,
         base=None,
-        target_name=name + ".exe"
+        target_name=name + ".exe",
+        shortcut_name="ManaTracker",
+        shortcut_dir="ManaTracker"
     )
 ]
 
+build_exe_opts = {
+    'packages': packages,
+    'excludes': excludes,
+    'include_files': include_files,
+    'build_exe': build_dir
+}
 
 setup(
     name=name,
@@ -56,12 +64,7 @@ setup(
     url=__about__.__url__,
     license=__about__.__license__,
     options={
-        'build_exe': {
-            'packages': packages,
-            'excludes': excludes,
-            'include_files': include_files,
-            'build_exe': build_dir
-        },
+        'build_exe': build_exe_opts
     },
     executables=executables,
     install_requires=requirements,

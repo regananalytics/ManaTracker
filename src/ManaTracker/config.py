@@ -13,7 +13,6 @@ REQUIRED_CONFIG_FILES = {
     "mem.yaml",
 }
 
-path = Path(__file__).parent
 rel_cfg_dirs = [
     "../../cfg/", # Dev
     "../../../cfg/", # Build
@@ -31,13 +30,14 @@ class Config:
 
         # Verify game config exists in config directory and load
         if args.cfg is not None:
-            cust_cfg_dir = Path(args.cfg)
+            cust_cfg_dir = Path(args.cfg).resolve()
+
             self._is_game_cfg(self.game, cust_cfg_dir)
             self.cfg_dir = cust_cfg_dir
         else:
             # Try default paths
             for rel_path in rel_cfg_dirs:
-                full_path = (path / rel_path).resolve()
+                full_path = Path(rel_path).resolve()
                 if full_path.exists():
                     try:
                         self._is_game_cfg(self.game, full_path)
@@ -45,6 +45,9 @@ class Config:
                     except:
                         continue
             self.cfg_dir = full_path
+
+        if args.verbose:
+                print(f"Config Directory: {cust_cfg_dir}")
 
         self.game_cfg_dir = self.cfg_dir / self.game
         self._layout_cfg_file = self.game_cfg_dir / 'cfg.yaml'

@@ -1,5 +1,5 @@
 __name__ = 'ManaTracker'
-__version__ = '0.1.0'
+__version__ = '0.0.2'
 __author__ = 'Dan Regan'
 __author_email__ = 'dan@regan-analytics.com'
 __description__ = 'Randomizer Tracker App built on C# and Python'

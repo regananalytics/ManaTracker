@@ -1,88 +1,124 @@
 ﻿using System;
+using System.CommandLine;
+using System.CommandLine.Invocation;
+using System.IO;
 using MemCore;
-using Microsoft.Extensions.Configuration;
 
 namespace ManaServer
 {
     class Program
     {
 
-        static void Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
             Console.WriteLine("\nStarting ManaServer...");
 
-            // Build configuration using cascading configuration sources
-            var defaultConfigPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
-            var configurationBuilder = new ConfigurationBuilder()
-                .AddJsonFile(defaultConfigPath, optional: false, reloadOnChange: true);
+            // Positional Argument
+            var gameArg = new Argument<string>(
+                "game", 
+                description: "The game configuration to use"
+            );
+            // Options
+            var cfgOpt = new Option<DirectoryInfo>(
+                aliases: new[] {"--config", "-c"},
+                description: "Path to a custom config directory"
+            );
+            var intOpt = new Option<int>(
+                aliases: new[] {"--interval", "-i"},
+                getDefaultValue: () => 1000,
+                description: "State update interval in ms"
+            );
+            var portOpt = new Option<int>(
+                aliases: new[] {"--port", "-p"},
+                getDefaultValue: () => 5556,
+                description: "Port to use for zmq messages"
+            );
+            var verbOpt = new Option<bool>(
+                aliases: new[] {"--verbose", "-v"},
+                description: "Enable verbose output"
+            );
 
-            var appConf = configurationBuilder.Build();
+            // Root command
+            var rootCommand = new RootCommand("ManaServer Game memory reader app");
+            rootCommand.Add(gameArg);
+            rootCommand.Add(cfgOpt);
+            rootCommand.Add(intOpt);
+            rootCommand.Add(portOpt);
+            rootCommand.Add(verbOpt);
 
-            // Top-level settings
-            string gameName = appConf["Game"] ?? "re1";
-            bool verbose = appConf["Output:verbose"] == "true";
-            int interval = int.Parse(appConf["Output:interval"] ?? "1000");
-
-            // Path Settings
-            var pathConf = appConf.GetSection("Path");
-            string configPath = "";
-            foreach (var setting in pathConf.GetChildren())
+            // Handler
+            rootCommand.SetHandler((game, cfgDir, interval, port, verbose) =>
             {
-                if (setting.Value == null)
-                    continue;
-                configPath = Path.GetFullPath(
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, setting.Value)
-                );
-                if (Path.Exists(configPath))
-                    break;
-            }
-            
-            Console.WriteLine($"    Using Game Config Path: {configPath}");
-            Console.WriteLine("    Loading Game Config: " + gameName);
-            Console.WriteLine("\n");
+                if (verbose)
+                    Console.WriteLine($"Config Directory: {cfgDir.FullName}");
 
-            string gameConfFile = Path.Combine(configPath, gameName, "mem.yaml");
+                if (!cfgDir.Exists)
+                    throw new System.Exception($"The provided config directory does not exist!");
 
-            MemoryCore memoryCore;
-            // Start MemCore
-            Console.WriteLine("Waiting to connect to game...");
-            while (true)
-            {
-                try
+                DirectoryInfo gameCfgDir = new DirectoryInfo(Path.Combine(cfgDir.FullName, game));
+
+                Console.WriteLine($"Loading game config for {game}...");
+                if (verbose)
+                    Console.WriteLine($"Searching for Game Config: {gameCfgDir.FullName}");
+
+                if (!gameCfgDir.Exists)
+                    throw new System.Exception($"A config for the game {game} could not be found in the provided config directory!");
+
+                FileInfo gameMemCfgFile = new FileInfo(Path.Combine(gameCfgDir.FullName, "mem.yaml"));
+
+                if (verbose)
+                    Console.WriteLine($"Searching for Game Memory Config: {gameMemCfgFile.FullName}");
+
+                if (!gameMemCfgFile.Exists)
+                    throw new System.Exception($"The Memory Config Yaml is missing from the game config!");
+
+                // Create MemoryCore object and connect to process
+                MemoryCore memoryCore;
+                Console.WriteLine("Waiting to connect to game...");
+                while (true)
                 {
-                    memoryCore = new MemoryCore(gameConfFile, false);
-                    break;
+                    try
+                    {
+                        memoryCore = new MemoryCore(gameMemCfgFile.FullName, false);
+                        break;
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        // Process not available. Keep waiting
+                        Thread.Sleep(500);
+                        continue;
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Console.WriteLine($"A system exception occured in MemCore: {ex.Message}");
+                        throw;
+                    }
                 }
-                catch (InvalidOperationException)
+
+                Console.WriteLine("Connected!\n");
+
+                var memQ = new MemQServer($"tcp://*:{port}", memoryCore.OutputState, interval, verbose);
+
+                Console.WriteLine("Starting Message Server...");
+                memQ.Start();
+
+                Console.CancelKeyPress += (sender, e) =>
                 {
-                    continue;
-                }
-                catch (System.Exception ex)
+                    Console.WriteLine("Stopping ManaServer...");
+                    memQ.Stop();
+                    e.Cancel = true;
+                    Environment.Exit(0);
+                };
+
+                Console.WriteLine("Press Ctrl-C to stop ManaServer.");
+                while (true)
                 {
-                    Console.WriteLine($"An exception occured in MemCore: {ex.Message}");
-                    throw;
+                    Thread.Sleep(interval);
                 }
-            }
-            Console.WriteLine("Connected!\n");
-            
-            var memQ = new MemQServer("tcp://*:5556", memoryCore.OutputState, interval, verbose);
+            },
+            gameArg, cfgOpt, intOpt, portOpt, verbOpt);
 
-            Console.WriteLine("Starting ZMQ Server...");
-            memQ.Start();
-
-            Console.CancelKeyPress += (sender, e) =>
-            {
-                Console.WriteLine("Stopping ManaServer...");
-                memQ.Stop();
-                e.Cancel = true;
-                Environment.Exit(0);
-            };
-
-            Console.WriteLine("Press Ctrl-C to stop ManaServer.");
-            while (true)
-            {
-                Thread.Sleep(1000);
-            }
+            return await rootCommand.InvokeAsync(args);
         }
     }
 }
