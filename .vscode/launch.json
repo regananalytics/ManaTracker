@@ -44,12 +44,14 @@
             "justMyCode": false
         },
         {
-            "name": "Python Debugger: Module",
+            "name": "Python Debugger: Bioshock Infinite",
             "type": "debugpy",
             "request": "launch",
             "cwd": "${workspaceFolder}/src/",
             "module": "ManaTracker",
-            "args": [],
+            "args": [
+                "--game", "bsinf", "-S", "-c", "../cfg/", "-s", "../../build/ManaServer/ManaServer.exe", "--verbose"
+            ],
             "justMyCode": false
         },
     ],

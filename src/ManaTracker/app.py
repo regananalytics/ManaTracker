@@ -1,11 +1,10 @@
 from dash import Dash, dcc, html, Input, Patch, Output
-from pathlib import Path
 import threading
 
 from ManaTracker.config import Config
 from ManaTracker.client import run_client
 from ManaTracker.items import Items
-from ManaTracker.state import State
+from ManaTracker.state import RE1State, State
 
 
 class ManaTracker:
@@ -16,7 +15,10 @@ class ManaTracker:
 
         self.app: App = self._init_app()
         self.server = self.app.server
-        self.state = State(self.config)
+        if self.config.game == "re1":
+            self.state = RE1State(self.config)
+        else:
+            self.state = State(self.config)
 
     def run(self, *args, **kwargs):
         self.app.run(

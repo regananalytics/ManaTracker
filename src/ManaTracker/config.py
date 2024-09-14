@@ -7,9 +7,9 @@ import yaml
 logger = logging.getLogger(__name__)
 
 REQUIRED_CONFIG_FILES = {
-    "cfg.yaml",
-    "items.json",
-    "items.png",
+    # "cfg.yaml",
+    # "items.json",
+    # "items.png",
     "mem.yaml",
 }
 
@@ -27,6 +27,8 @@ class Config:
         self.host: str = args.host
         self.port: int = args.port
         self.debug: bool = args.debug
+
+        self.state_csv = args.csv
 
         # Verify game config exists in config directory and load
         if args.cfg is not None:
@@ -85,7 +87,7 @@ class Config:
         return self._sheet
 
     def _is_game_cfg(self, game: str, cfg_dir: Path | None = None):
-        cfg_dir = cfg_dir or DEFAULT_CFG_DIR
+        cfg_dir = cfg_dir
         if not cfg_dir.exists():
             raise ValueError(f'The config directory could not be found: {cfg_dir.resolve()}')
         game_cfg_dir = cfg_dir / game

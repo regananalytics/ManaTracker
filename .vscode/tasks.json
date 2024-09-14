@@ -158,12 +158,21 @@
             "group": "build"
         },
         {
-            "label": "Build All",
+            "label": "Build C#",
             "dependsOn": [
                 "Build ProcessMemory",
-                "Build ManaServer",
+                "Build ManaServer"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build All",
+            "dependsOn": [
+                "Build C#",
                 "Build ManaTracker",
             ],
+            "dependsOrder": "sequence",
             "problemMatcher": [],
             "group": "build"
         },
