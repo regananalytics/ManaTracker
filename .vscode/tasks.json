@@ -1,45 +1,7 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "Build ProcessMemory x86",
-            "type": "process",
-            "command": "dotnet",
-            "args": [
-                "build",
-                "src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/ProcessMemory.csproj",
-                "--configuration", "Debug",
-                "--property:Platform=x86"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "Build ProcessMemory x64",
-            "type": "process",
-            "command": "dotnet",
-            "args": [
-                "build",
-                "src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/ProcessMemory.csproj",
-                "--configuration", "Debug",
-                "--property:Platform=x64"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "Copy ProcessMemory dlls",
-            "type": "shell",
-            "command": "powershell",
-            "args": [
-                "-Command",
-                "if (Test-Path -Path 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory32.dll')",
-                "{ Remove-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory32.dll'};",
-                "if (Test-Path -Path 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory64.dll')",
-                "{ Remove-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory64.dll'};",
-                "Copy-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/bin/x86/Debug/netstandard2.0/ProcessMemory32.dll' 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory32.dll';",
-                "Copy-Item 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory/ProcessMemory/bin/x64/Debug/netstandard2.0/ProcessMemory64.dll' 'src/ManaServer/libs/MemCore/src/libs/ProcessMemory64.dll';"
-            ],
-            "problemMatcher": [],
-        },
+        
         {
             "label": "Build MemCore",
             "type": "process",
@@ -136,17 +98,6 @@
             "group": "build"
         },
         {
-            "label": "Build ProcessMemory",
-            "dependsOn": [
-                "Build ProcessMemory x86",
-                "Build ProcessMemory x64",
-                "Copy ProcessMemory dlls"
-            ],
-            "dependsOrder": "sequence",
-            "problemMatcher": [],
-            "group": "build"
-        },
-        {
             "label": "Build ManaServer",
             "dependsOn": [
                 "Build ManaServer x86",
@@ -160,7 +111,6 @@
         {
             "label": "Build C#",
             "dependsOn": [
-                "Build ProcessMemory",
                 "Build ManaServer"
             ],
             "problemMatcher": [],
@@ -181,7 +131,6 @@
             "dependsOn": [
                 "Clean Build Dir",
                 "Copy Release Files",
-                "Build ProcessMemory",
                 "Build ManaServer",
                 "Build ManaTracker",
                 "Zip Build",
