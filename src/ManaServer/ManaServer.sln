@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManaServer", "src\ManaServer.csproj", "{89944D31-23BD-45FA-B152-402A85F41540}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemCore", "libs\MemCore\src\MemCore\MemCore.csproj", "{8C298603-4DB0-4D28-8F1C-693D85D9695C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemCore", "..\MemCore\src\MemCore.csproj", "{8C298603-4DB0-4D28-8F1C-693D85D9695C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

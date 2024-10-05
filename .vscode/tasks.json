@@ -8,7 +8,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "src/ManaServer/libs/MemCore/src/MemCore/MemCore.csproj",
+                "src/ManaServer/libs/MemCore/src/MemCore.csproj",
                 "--no-dependencies",
                 "--debug"
             ],
@@ -21,6 +21,18 @@
             "args": [
                 "build",
                 "src/ManaServer/src/ManaServer.csproj",
+                "--debug"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build ManaSpline x86",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "src/ManaSpline/src/ManaSpline.csproj",
                 "--debug"
             ],
             "problemMatcher": "$msCompile",
@@ -50,7 +62,7 @@
             "group": "build"
         },
         {
-            "label": "Copy Build",
+            "label": "Copy ManaServer Build",
             "type": "shell",
             "command": "powershell",
             "args": [
@@ -58,6 +70,18 @@
                 "if (Test-Path -Path 'build/ManaServer')",
                 "{ Remove-Item -Recurse -Force 'build/ManaServer'};",
                 "Copy-Item -Recurse 'src/ManaServer/src/bin/Debug/net8.0/win-x86' 'build/ManaServer'"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Copy ManaSpline Build",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (Test-Path -Path 'build/ManaSpline')",
+                "{ Remove-Item -Recurse -Force 'build/ManaSpline'};",
+                "Copy-Item -Recurse 'src/ManaSpline/src/bin/Debug/net8.0-windows' 'build/ManaSpline'"
             ],
             "problemMatcher": []
         },
@@ -102,7 +126,18 @@
             "dependsOn": [
                 "Build ManaServer x86",
                 "Copy Cfg",
-                "Copy Build"
+                "Copy ManaServer Build"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build ManaSpline",
+            "dependsOn": [
+                "Build ManaSpline x86",
+                // "Copy Cfg",
+                "Copy ManaSpline Build"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": [],

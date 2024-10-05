@@ -31,6 +31,22 @@ GameVersions:
         Description: Camera Base Pointer
         Address: 0x00F679A0
 
+
+OpAddresses:
+
+  XYPosOp:
+    Name: XYPosOp
+    Description: Player XY Position Op Address
+    Offset: 0x003C0938
+    Size: 0x5
+
+  ZPosOp:
+    Name: ZPosOp
+    Description: Player Z Position Op Address
+    Offset: 0x003C0940
+    Size: 0x3
+
+
 # State Definitions
 StatePointers:
 
@@ -68,30 +84,38 @@ StatePointers:
     Offset: 0x4C 
     Type: Float
 
-  Pitch:
-    Name: Pitch
-    Description: Camera Pitch
-    Address: CameraBase
-    Levels:
-      - 0x8C
-    Offset: 0x50
-    Type: Short
+  # XYPosOp:
+  #   Name: XYPosOp
+  #   Description: Player XY Position Op Pointer
+  #   Address: XYPosOpBase
+  #   Offset: 0x0
+  #   Type: Byte
+  #   Default: 0x05
 
-  Yaw:
-    Name: Yaw
-    Description: Camera Yaw
-    Address: CameraBase
-    Levels:
-      - 0x8C
-    Offset: 0x54
-    Type: Short
+  # Pitch:
+  #   Name: Pitch
+  #   Description: Camera Pitch
+  #   Address: CameraBase
+  #   Levels:
+  #     - 0x8C
+  #   Offset: 0x50
+  #   Type: Short
 
-  Roll:
-    Name: Roll
-    Description: Camera Roll
-    Address: CameraBase
-    Levels:
-      - 0x8C
-    Offset: 0x52
-    Type: Short
+  # Yaw:
+  #   Name: Yaw
+  #   Description: Camera Yaw
+  #   Address: CameraBase
+  #   Levels:
+  #     - 0x8C
+  #   Offset: 0x54
+  #   Type: Short
+
+  # Roll:
+  #   Name: Roll
+  #   Description: Camera Roll
+  #   Address: CameraBase
+  #   Levels:
+  #     - 0x8C
+  #   Offset: 0x52
+  #   Type: Short
 
