@@ -1,3 +1,6 @@
 [submodule "src/ManaServer/libs/MemCore"]
 	path = src/MemCore
 	url = https://github.com/regananalytics/MemCore.git
+[submodule "src/ManaSpline"]
+	path = src/ManaSpline
+	url = https://github.com/regananalytics/ManaSpline.git
