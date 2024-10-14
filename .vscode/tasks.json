@@ -28,12 +28,12 @@
         },
         {
             "label": "Build ManaSpline x86",
-            "type": "process",
+            "type": "shell",
             "command": "dotnet",
             "args": [
                 "build",
-                "src/ManaSpline/src/ManaSpline.csproj",
-                "--debug"
+                "${workspaceFolder}/src/ManaSpline/src/ManaSpline.csproj",
+                "--configuration", "Debug"
             ],
             "problemMatcher": "$msCompile",
             "group": "build"

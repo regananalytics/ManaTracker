@@ -10,3 +10,4 @@ zip/
 
 *.zip
 *.spec
+config.json

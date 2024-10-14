@@ -5,32 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Executable",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/ManaServer/ManaServer.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": ".NET Core Launch (console)",
+            "name": "ManaSpline",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "Build ManaServer",   // Optional: Builds the project before debugging
-            "program": "${workspaceFolder}/src/ManaServer/src/bin/Debug/net8.0/ManaServer.dll", // Path to the output .dll
+            "preLaunchTask": "Build ManaSpline",   // Optional: Builds the project before debugging
+            "program": "${workspaceFolder}/build/ManaSpline/ManaSpline.dll", // Path to the output .dll
             "args": [],                 // Arguments to pass to the program
-            "cwd": "${workspaceFolder}/src/ManaServer/",
+            "cwd": "${workspaceFolder}",
             "stopAtEntry": true,       // If true, stops at the entry point of the program
             "console": "integratedTerminal",  // Use the VS Code terminal for console output
             "internalConsoleOptions": "openOnSessionStart",  // Use only the integrated terminal
             "targetArchitecture": "x86_64",
             "env": {},                  // Optional: Environment variables for the program
             "sourceFileMap": {          // Optional: Map source code for remote debugging
-              "/source": "${workspaceFolder}/src/ManaServer/src"
+              "/source": "${workspaceFolder}/src/ManaSpline/src"
             },
-            "justMyCode": true
+            "justMyCode": false
         },
         {
             "name": "Python Debugger: Current File with Arguments",
