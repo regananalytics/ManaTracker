@@ -4,8 +4,9 @@
  This repo is a WIP.
 
 ## Instructions
-- Download latest release
+- Download latest release of ManaTracker
 - Unzip the archive anywhere you'd like. Documents or Desktop are fine.
+- Install .NET 8.0 runtime from here: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
 - Launch ManaTracker/ManaTracker.exe - this will start the RE1 Tracker UI and Server
 - In your browser, go to http://localhost:8080 to view the Tracker UI
 - Launch RE1 and start a new game!
