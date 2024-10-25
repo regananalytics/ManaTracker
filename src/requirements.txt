@@ -1,4 +1,4 @@
-cx_freeze
 dash
 pyyaml
 pyzmq
+pyinstaller
