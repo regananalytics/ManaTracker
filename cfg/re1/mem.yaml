@@ -164,6 +164,15 @@ ReplicaPointers:
     Replicas: 10
     Padding: 0x8
 
+  ItemBox:
+    Name: ItemBox
+    Description: ItemBox Items
+    Address: ItemState
+    Offset: 0x88
+    Type: ItemStruct
+    Replicas: 256
+    Padding: 0x8
+
 
 StateStructs:
 
@@ -199,3 +208,4 @@ StateStructs:
       - Name: Quantity
         Offset: 0x4
         Type: Int
+
